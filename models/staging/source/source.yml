@@ -1,0 +1,11 @@
+version: 2
+
+sources: 
+  - name: dbt_hle
+    database: eighth-jigsaw-410910
+    tables: 
+      - name: customers
+      - name: orders
+      - name: payments 
+
+  
