@@ -5,9 +5,9 @@ source as (
 
 customers_change_name as (
     select
-        customers.FIRST_NAME    as customer_first_name,
-        customers.LAST_NAME as customer_last_name,
-        customers.ID as customer_id
+        FIRST_NAME    as customer_first_name,
+        LAST_NAME as customer_last_name,
+        ID as customer_id
     from source
 )
 

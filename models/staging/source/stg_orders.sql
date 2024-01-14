@@ -5,10 +5,10 @@ source as (
 
 orders_change_name as (
     select 
-        Orders.ID as order_id,
-        Orders.USER_ID	as customer_id,
-        Orders.ORDER_DATE AS order_placed_at,
-        Orders.STATUS AS order_status
+        ID as order_id,
+        USER_ID	as customer_id,
+        ORDER_DATE AS order_placed_at,
+        STATUS AS order_status
     from source
 )
 

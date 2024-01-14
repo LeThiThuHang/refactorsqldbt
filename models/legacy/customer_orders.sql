@@ -3,7 +3,7 @@ with
 orders as (
     select * from {{ref('stg_orders')}}
 ), 
-custsomers as (
+customers as (
     select * from {{ref('stg_customers')}}
 ), 
 payments as (
@@ -15,11 +15,11 @@ payments as (
 customer_orders as (
     select 
     C.customer_id
-    , min(ORDER_DATE) as first_order_date
-    , max(ORDER_DATE) as most_recent_order_date
-    , count(ORDERS.ID) AS number_of_orders
+    , min(orders.order_placed_at) as first_order_date
+    , max(orders.order_placed_at) as most_recent_order_date
+    , count(orders.order_id) AS number_of_orders
     from customers C 
-    left join orders as Orders
+    left join orders
         on orders.customer_id = C.customer_id 
     group by 1
 ), 

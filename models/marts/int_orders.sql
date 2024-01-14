@@ -1,5 +1,5 @@
-with paid_orders as (
-
+with 
+paid_orders as (
     select 
     Orders.order_id,
     Orders.customer_id,
@@ -9,10 +9,10 @@ with paid_orders as (
     p.payment_finalized_date,
     C.customer_first_name,
     C.customer_last_name
-FROM orders as Orders
-left join payments p 
+FROM{{ref('stg_orders')}} as Orders
+left join {{ref('stg_payments')}} p 
     ON orders.order_ID = p.order_id
-left join customers C 
+left join {{ref('stg_customers')}} C 
     on orders.customer_id = C.customer_id 
 ),
 
