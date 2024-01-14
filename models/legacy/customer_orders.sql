@@ -1,29 +1,4 @@
 with 
---import CTEs
-orders as (
-    select * from {{ref('stg_orders')}}
-), 
-customers as (
-    select * from {{ref('stg_customers')}}
-), 
-payments as (
-    select * from {{ref('stg_payments')}}
-),
-
---logical CTEs 
-
-customer_orders as (
-    select 
-    C.customer_id
-    , min(orders.order_placed_at) as first_order_date
-    , max(orders.order_placed_at) as most_recent_order_date
-    , count(orders.order_id) AS number_of_orders
-    from customers C 
-    left join orders
-        on orders.customer_id = C.customer_id 
-    group by 1
-), 
-
 -- final CTEs
 final_cte as (
     select
@@ -39,7 +14,7 @@ final_cte as (
     END as nvsr,
     c.first_order_date as fdos
     FROM {{ref('int_orders')}} p
-    left join customer_orders as c 
+    left join {{ref('int_customers')}} as c 
         USING (customer_id)
     ORDER BY order_id
 )
