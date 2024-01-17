@@ -1,6 +1,7 @@
 with 
 customer_orders as (
     select 
+    
     C.customer_id
     , min(orders.order_placed_at) as first_order_date
     , max(orders.order_placed_at) as most_recent_order_date

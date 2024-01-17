@@ -22,3 +22,5 @@ final_cte as (
 --simple select statement 
 select * from final_cte
 
+
+-- adding comments for feature/ci testing
